@@ -6,4 +6,4 @@
 </script>
 
 <h1>our home</h1>
-<FormSearchEmail placeholder="type email address and hit enter"/>  
+<FormSearchEmail placeholder="type email address and hit Go"/>  

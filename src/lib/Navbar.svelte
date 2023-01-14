@@ -11,10 +11,13 @@
 
 <style lang="scss">
 	nav ul {
+		display: flex;
+		justify-content: space-around;
 		list-style: none;
-		padding: 3px 5px;
+		padding: 8px;
 		background: #111;
         border-radius: 100px;
+		text-decoration: none;
 
 		a {
 			color: #fff;
@@ -23,10 +26,6 @@
 			&:hover {
 				text-decoration: underline;
 			}
-		}
-
-		li {
-			display: inline;
 		}
 	}
 </style>
