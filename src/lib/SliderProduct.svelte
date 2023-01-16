@@ -2,6 +2,7 @@
 	import CardProduct from '$lib/CardProduct.svelte';
 
     export let title = '';
+    let toggle = true;
 
     let return_from_api = [
 		{ id: 1, name: 'hand bouquet', price: 500000, image:'https://via.placeholder.com/150' },
@@ -13,9 +14,11 @@
 </script>
 
 
-<section>
-    <div class="content">
+<section class="{toggle ? 'expand' : ''}">
+    <div class="content"
+	on:click="{() => toggle = !toggle}">
         <h2>{title}</h2>
+        {toggle ? '<' : '>'}
     </div>
     <div class="slider">
         {#each return_from_api as product (product.id)}
@@ -30,6 +33,18 @@
         gap: 1vw;
         position: relative;
         padding-top: 1vw;
+        &.expand {
+            flex-direction: column;
+            
+            .content {
+                width: 100%;
+                justify-content: center;
+                gap: 1vw;
+                h2 {
+                    writing-mode: unset;
+                }
+            }
+        }
         
         .content {
             background-color: #ccc;
@@ -39,7 +54,12 @@
             height: 240px;
             justify-content: center;
             text-align: center;
-            writing-mode: vertical-rl; 
+            transition: width 90ms;
+            transition-timing-function: ease;
+            
+            h2 {
+                writing-mode: vertical-rl;
+            }
         }
 
         .slider {
