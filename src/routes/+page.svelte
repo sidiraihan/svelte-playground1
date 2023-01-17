@@ -8,6 +8,6 @@
 
 <h1>our home</h1>
 <FormSearchEmail placeholder="type email address and hit Go"/>  
-<SliderProduct title="Diskon 50%"/> 
-<SliderProduct title="Gratisan"/>  
+<SliderProduct title="Diskon 50%" expand="true" categoryId="62518"/> 
+<SliderProduct title="Gratisan" categoryId="62522"/>  
 

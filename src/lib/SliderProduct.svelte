@@ -1,16 +1,30 @@
 <script>
+    import { onMount } from 'svelte';
 	import CardProduct from '$lib/CardProduct.svelte';
 
     export let title = '';
-    let toggle = true;
+    export let expand = false;
+    export let categoryId;
 
-    let return_from_api = [
-		{ id: 1, name: 'hand bouquet', price: 500000, image:'https://via.placeholder.com/150' },
-		{ id: 2, name: 'bunga papan', price: 500000,image:'https://via.placeholder.com/150' },
-		{ id: 3, name: 'parcel', price: 800000,image:'https://via.placeholder.com/150' },
-		{ id: 4, name: 'bp-1', price: 200000,image:'https://via.placeholder.com/150' },
-		{ id: 5, name: 'cake', price: 250000,image:'https://via.placeholder.com/150' }
-	];
+    let products;
+    let toggle = expand;
+
+    const get = async (url, params) => {
+    const response = await fetch(url + '?' + new URLSearchParams(params))
+    const data = await response.json()
+    return data
+    }
+
+    onMount(async () => {
+        const data = await get('https://prestisa.id/wp-json/wc/store/products', {
+            category: categoryId,
+        })
+
+        products = data;
+
+    });
+    
+
 </script>
 
 
@@ -21,9 +35,15 @@
         {toggle ? '<' : '>'}
     </div>
     <div class="slider">
-        {#each return_from_api as product (product.id)}
-        <CardProduct item={product}/>
-    {/each}
+        {#if products === undefined}
+            {#each Array(3) as _, index (index)}
+                <CardProduct skeleton="true"/>
+            {/each}
+        {:else}
+            {#each products as product (product.id)}
+                <CardProduct item={product}/>
+            {/each}
+        {/if}    
     </div>
 </section>
 
