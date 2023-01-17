@@ -9,16 +9,14 @@
     let products;
     let toggle = expand;
 
-    const get = async (url, params) => {
-    const response = await fetch(url + '?' + new URLSearchParams(params))
+    const get = async (url) => {
+    const response = await fetch(url)
     const data = await response.json()
     return data
     }
 
     onMount(async () => {
-        const data = await get('https://prestisa.id/wp-json/wc/store/products', {
-            category: categoryId,
-        })
+        const data = await get(`/api/product/category/${categoryId}`)
 
         products = data;
 
