@@ -11,3 +11,8 @@
         </div>
     </div>
 </section>
+
+
+<svelte:head>
+  <title>{data.item.name}</title>
+</svelte:head>

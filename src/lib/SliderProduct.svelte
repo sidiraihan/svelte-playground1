@@ -1,5 +1,4 @@
 <script>
-    import { onMount } from 'svelte';
 	import CardProduct from '$lib/CardProduct.svelte';
 
     export let title = '';
@@ -9,19 +8,10 @@
     let products;
     let toggle = expand;
 
-    const get = async (url) => {
-    const response = await fetch(url)
-    const data = await response.json()
-    return data
+    async function initProduct() {        
+        const response = await fetch(`/api/product/category/${categoryId}`)
+        products = await response.json()
     }
-
-    onMount(async () => {
-        const data = await get(`/api/product/category/${categoryId}`)
-
-        products = data;
-
-    });
-    
 
 </script>
 
@@ -33,15 +23,17 @@
         {toggle ? '<' : '>'}
     </div>
     <div class="slider">
-        {#if products === undefined}
+        {#await initProduct() }
             {#each Array(3) as _, index (index)}
                 <CardProduct skeleton="true"/>
             {/each}
-        {:else}
-            {#each products as product (product.id)}
-                <CardProduct item={product}/>
+        {:then}
+            {#each products as product, i}
+                <CardProduct item={product} key={i + 1}/>
             {/each}
-        {/if}    
+        {:catch error}
+            <span>{error}</span>   
+        {/await}    
     </div>
 </section>
 
