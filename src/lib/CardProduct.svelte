@@ -2,18 +2,16 @@
     export let item = [];
     export let skeleton = false;
     export let key;
-
-    let lazyload = (key > 3 ? 'lazy': null)
 </script>
 
 {#if skeleton}
-<div class="card">
-    <a href="#loading"><span> </span></a>
+<div class="card skeleton">
+    <a href="#loading"><span data-id="{key}"></span></a>
 </div>
 {:else}
 <div class="card" data-id="{key}">
     <a href="/product/{item.id}">
-        <img loading="{lazyload}" src="{item.images[0].thumbnail}" alt="test"/>
+        <img loading={(key < 3 ? 'eager': 'lazy')} src="{item.images[0].thumbnail}" alt="test"/>
         <div class="meta">
             <h3>{item.name}</h3>
             <p>Rp{item.prices.price}</p>
@@ -25,6 +23,12 @@
 
 <style lang="scss">
     .card {
+
+        &.skeleton {
+            background-color: #fafafa;
+            border: transparent;
+        }
+
         a {
             width: 150px;
             height: 240px;
