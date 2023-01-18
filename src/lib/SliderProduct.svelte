@@ -1,17 +1,18 @@
 <script>
 	import CardProduct from '$lib/CardProduct.svelte';
+    import { useQuery } from '@sveltestack/svelte-query';
 
     export let title = '';
     export let expand = false;
     export let categoryId;
 
-    let products;
     let toggle = expand;
 
-    async function initProduct() {        
-        const response = await fetch(`/api/product/category/${categoryId}`)
-        products = await response.json()
-    }
+    const queryResult = useQuery(['products', categoryId], () =>
+     fetch(`/api/product/category/${categoryId}`).then(res =>
+       res.json()
+     )
+    )
 
 </script>
 
@@ -23,17 +24,17 @@
         {toggle ? '<' : '>'}
     </div>
     <div class="slider">
-        {#await initProduct() }
+        {#if $queryResult.isLoading}
             {#each Array(3) as _, index (index)}
                 <CardProduct skeleton="true"/>
             {/each}
-        {:then}
-            {#each products as product, i}
+        {:else if $queryResult.error}
+            <span>An error has occurred: {$queryResult.error.message}</span>
+        {:else}
+            {#each $queryResult.data as product, i}
                 <CardProduct item={product} key={i + 1}/>
-            {/each}
-        {:catch error}
-            <span>{error}</span>   
-        {/await}    
+            {/each} 
+        {/if}    
     </div>
 </section>
 

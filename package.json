@@ -22,9 +22,12 @@
 		"prettier-plugin-svelte": "^2.8.1",
 		"sass": "^1.53.0",
 		"svelte": "^3.54.0",
+		"svelte-preprocess": "^4.10.7",
 		"vite": "^4.0.0",
-		"vitest": "^0.25.3",
-		"svelte-preprocess": "^4.10.7"
+		"vitest": "^0.25.3"
 	},
-	"type": "module"
+	"type": "module",
+	"dependencies": {
+		"@sveltestack/svelte-query": "^1.6.0"
+	}
 }
