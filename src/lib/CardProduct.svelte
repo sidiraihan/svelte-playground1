@@ -45,9 +45,10 @@
             }
         }
         img {
-            background-color: #ccc;
             width: 150px;
             height: 150px;
+            object-fit: cover;
+            background-color: #ccc;
         }
     }
 </style>
