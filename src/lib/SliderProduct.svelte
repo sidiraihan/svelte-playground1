@@ -21,7 +21,6 @@
     <div class="content"
 	on:click="{() => toggle = !toggle}">
         <h2>{title}</h2>
-        {toggle ? '<' : '>'}
     </div>
     <div class="slider">
         {#if $queryResult.isLoading}
@@ -67,9 +66,20 @@
             text-align: center;
             transition: width 90ms;
             transition-timing-function: ease;
-            
+            background-image: url(https://picsum.photos/3000);
+            background-attachment: fixed;
+            background-size: cover;
+            cursor: pointer;
+
+            @media only screen and (max-width: 768px) {
+                background-image: url(https://picsum.photos/800);
+            }
             h2 {
                 writing-mode: vertical-rl;
+                background: #fff;
+                padding: 1vw;
+                border-radius: 1vw;
+                opacity: 0.5;
             }
         }
 
