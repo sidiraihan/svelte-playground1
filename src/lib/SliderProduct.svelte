@@ -66,13 +66,16 @@
             text-align: center;
             transition: width 90ms;
             transition-timing-function: ease;
-            background-image: url(https://picsum.photos/3000);
+            background-image: url(https://picsum.photos/2000);
             background-attachment: fixed;
-            background-size: cover;
+            background-size: contain;
+            background-position: center;
             cursor: pointer;
 
             @media only screen and (max-width: 768px) {
                 background-image: url(https://picsum.photos/800);
+                background-size: cover;
+                background-position: left;
             }
             h2 {
                 writing-mode: vertical-rl;
