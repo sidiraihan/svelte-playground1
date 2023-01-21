@@ -24,7 +24,7 @@
     </div>
     <div class="slider">
         {#if $queryResult.isLoading}
-            {#each Array(3) as _, index (index)}
+            {#each Array(4) as _, index (index)}
                 <CardProduct skeleton="true"/>
             {/each}
         {:else if $queryResult.error}
