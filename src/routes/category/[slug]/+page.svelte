@@ -1,10 +1,17 @@
+
+
 <script>
 import CardProduct from '$lib/CardProduct.svelte';
 export let data;
+console.info(data)
 </script>
 
+<svelte:head>
+  <title>{data.props.slug}</title>
+</svelte:head>
+
 <section>
-    {#each data.item as product, i}
+    {#each data.props.item as product, i}
         <CardProduct item={product} key={i + 1} description="{false}" ref="srp"/>
     {/each} 
 </section>
