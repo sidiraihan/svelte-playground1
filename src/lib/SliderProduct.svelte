@@ -18,6 +18,7 @@
 
 
 <section class="{toggle ? 'expand' : ''}">
+    <!-- svelte-ignore a11y-click-events-have-key-events -->
     <div class="content"
 	on:click="{() => toggle = !toggle}">
         <h2>{title}</h2>

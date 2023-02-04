@@ -1,7 +1,9 @@
 <script>
     export let item = [];
     export let skeleton = false;
+    export let description = true;
     export let key;
+    export let ref;
 </script>
 
 {#if skeleton}
@@ -10,12 +12,14 @@
 </div>
 {:else}
 <div class="card" data-id="{key}">
-    <a href="/product/{item.id}">
+    <a href="/product/{item.id}" {ref}>
         <img loading={(key < 3 ? 'eager': 'lazy')} src="{item.images[0].thumbnail}" alt="test"/>
         <div class="meta">
             <h3>{item.name}</h3>
             <p>Rp{item.prices.price}</p>
-            <p>{item.description}</p>
+            {#if description}
+            <p id="description">{item.description}</p>
+            {/if}
         </div>
     </a>
 </div>

@@ -19,7 +19,7 @@
         {:else}
              <nav>
             {#each $queryResult.data as category, i}
-                <a href="#{category.slug}">{category.name}</a>
+                <a href="/category/{category.slug}?id={category.id}">{category.name}</a>
             {/each} 
             </nav>
         {/if}    
@@ -30,7 +30,7 @@
     section {
         .content {
             margin: 1vh 0 0 0;
-            height: 18vh;
+            height: 25vh;
             overflow: scroll;
             box-shadow: 1px -6px 14px -12px rgba(0, 0, 0, 0.508) inset;
 

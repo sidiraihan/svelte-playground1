@@ -10,6 +10,9 @@
         <div class="meta">
             <h3>{data.item.name}</h3>
             <p>{@html data.item.price_html}</p>
+            {#if data.item.description}
+                <div class="description">{@html data.item.description}</div>
+            {/if}
         </div>
     </div>
 </section>
@@ -40,6 +43,16 @@
 
             h3 {
                 font-size: 17px;
+            }
+
+            .description {
+                padding: 2vw;
+                background: #f1f1f1;
+                border-radius: 8px;
+                color: #333;
+                display: flex;
+                flex-direction: column;
+                gap: 3vh;
             }
         }
     }
