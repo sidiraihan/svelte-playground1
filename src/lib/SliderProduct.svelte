@@ -26,13 +26,13 @@
     <div class="slider">
         {#if $queryResult.isLoading}
             {#each Array(4) as _, index (index)}
-                <CardProduct skeleton="true"/>
+                <CardProduct skeleton="true" key={index} ref="slider"/>
             {/each}
         {:else if $queryResult.error}
             <span>An error has occurred: {$queryResult.error.message}</span>
         {:else}
             {#each $queryResult.data as product, i}
-                <CardProduct item={product} key={i + 1}/>
+                <CardProduct item={product} key={i + 1} ref="slider"/>
             {/each} 
         {/if}    
     </div>

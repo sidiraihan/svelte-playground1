@@ -11,11 +11,10 @@ export let data;
   <title>{data.props.slug}</title>
 </svelte:head>
 
+<QueryClientProvider>
+    <CategoryProduct current={data.props.id}/> 
+</QueryClientProvider>
 <section>
-    <QueryClientProvider>
-        <CategoryProduct current={data.props.id}/> 
-    </QueryClientProvider>
-
     {#each data.props.item as product, i}
         <CardProduct item={product} key={i + 1} description="{false}" ref="srp"/>
     {/each} 
@@ -31,7 +30,7 @@ export let data;
 
         @media only screen and (max-width: 768px) {
             :global([ref=srp]) {
-                width: 198px !important;
+                width: 180px !important;
 	        }
             :global([ref=srp] img) {
                 width: 100% !important;
