@@ -1,5 +1,6 @@
 <script>
     import { useQuery } from '@sveltestack/svelte-query';
+    export let current = null;
 
     const queryResult = useQuery(['products'], () =>
      fetch(`/api/product/category`).then(res =>
@@ -19,7 +20,7 @@
         {:else}
              <nav>
             {#each $queryResult.data as category, i}
-                <a href="/category/{category.slug}?id={category.id}">{category.name}</a>
+                <a class:selected="{current == category.id}" on:click="{() => current = category.id}" href="/category/{category.slug}?id={category.id}">{category.name}</a>
             {/each} 
             </nav>
         {/if}    
@@ -54,6 +55,11 @@
                     border-radius: 8px;
                     text-decoration: none;
                     color: black;
+
+                    &.selected {
+                        background-color: black;
+                        color: white;
+                    }
                 }
             }
         }

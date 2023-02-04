@@ -1,11 +1,13 @@
 
 export async function load({ fetch, url, params }) {
-    const res = await fetch(`/api/product/category/${url.searchParams.get('id')}`);
+    const get_id = url.searchParams.get('id');
+    const res = await fetch(`/api/product/category/${get_id}`);
     const item = await res.json();
    
     return { 
         props: { 
           slug: params.slug, 
+          id: get_id, 
           item
         } 
     };
