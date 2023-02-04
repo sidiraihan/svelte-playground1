@@ -1,7 +1,7 @@
 <script>
     export let item = [];
     export let skeleton = false;
-    export let description = true;
+    export let description = false;
     export let key;
     export let ref;
 </script>

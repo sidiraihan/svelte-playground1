@@ -9,7 +9,7 @@
 
 <QueryClientProvider>
 	<CategoryProduct/> 
-	<SliderProduct title="Diskon 50%" expand="{false}" categoryId="62518"/> 
+	<SliderProduct title="Diskon 50%" expand="{false}" categoryId="87512"/> 
 	<SliderProduct title="Gratisan" expand="{true}" categoryId="62522"/>  
 	<SliderProduct title="Spesial Imlek" expand="{false}" categoryId="62525"/>  
 </QueryClientProvider>
