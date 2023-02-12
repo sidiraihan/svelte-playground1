@@ -21,7 +21,7 @@
         {:else}
              <nav>
             {#each $queryResult.data as category, i}
-                <a class:selected="{current == category.id}" on:click="{() => current = category.id}" href="/category/{category.slug}?id={category.id}">{category.name}</a>
+                <a class="{current == category.id ? 'selected skeleton' : ''}" on:click="{() => current = category.id}" href="/category/{category.slug}?id={category.id}">{category.name}</a>
             {/each} 
             </nav>
         {/if}    
