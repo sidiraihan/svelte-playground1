@@ -1,7 +1,6 @@
 
 
 <script>
-import { QueryClientProvider } from '@sveltestack/svelte-query';
 import CategoryProduct from '$lib/CategoryProduct.svelte';
 import CardProduct from '$lib/CardProduct.svelte';
 export let data;
@@ -11,9 +10,8 @@ export let data;
   <title>{data.props.slug}</title>
 </svelte:head>
 
-<QueryClientProvider>
-    <CategoryProduct current={data.props.id}/> 
-</QueryClientProvider>
+
+<CategoryProduct current={data.props.id}/> 
 <section>
     {#each data.props.item as product, i}
         <CardProduct item={product} key={i + 1} description="{false}" ref="srp"/>

@@ -1,4 +1,5 @@
 <script>
+
 	import CardProduct from '$lib/CardProduct.svelte';
     import { useQuery } from '@sveltestack/svelte-query';
 
@@ -9,10 +10,11 @@
     let toggle = expand;
 
     const queryResult = useQuery(['products', categoryId], () =>
-     fetch(`/api/product/category/${categoryId}`).then(res =>
-       res.json()
-     )
-    )
+             fetch(`/api/product/category/${categoryId}`).then(res =>
+                res.json()
+            ),{
+         staleTime: 120 * 1000,
+    })
 
 </script>
 

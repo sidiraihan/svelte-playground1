@@ -8,7 +8,7 @@
 
 {#if skeleton}
 <div class="card skeleton">
-    <a href="#loading"><span data-id="{key}"></span></a>
+    <a href="#loading" {ref}><span data-id="{key}"></span></a>
 </div>
 {:else}
 <div class="card" data-id="{key}">
@@ -27,12 +27,6 @@
 
 <style lang="scss">
     .card {
-
-        &.skeleton {
-            background-color: #fafafa;
-            border: transparent;
-        }
-
         a {
             width: 150px;
             height: 240px;

@@ -1,7 +1,6 @@
 <script>
     export let data;
     import SliderProduct from '$lib/SliderProduct.svelte';
-	import { QueryClientProvider } from '@sveltestack/svelte-query';
 </script>
 
 <section>
@@ -16,9 +15,8 @@
         </div>
     </div>
 </section>
-<QueryClientProvider>
+
 	<SliderProduct title="{data.item.categories[0].name}" expand="{false}" categoryId="{data.item.categories[0].id}"/> 
-</QueryClientProvider>
 
 
 <svelte:head>

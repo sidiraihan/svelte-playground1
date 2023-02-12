@@ -3,10 +3,11 @@
     export let current = null;
 
     const queryResult = useQuery(['products'], () =>
-     fetch(`/api/product/category`).then(res =>
-       res.json()
-     )
-    )
+        fetch(`/api/product/category`).then(res =>
+            res.json()
+        ),{
+         staleTime: 120 * 1000,
+    })
 
 </script>
 
@@ -14,7 +15,7 @@
 <section>
     <div class="content">
         {#if $queryResult.isLoading}
-            <span>loading...</span>
+            <span class="loader"></span>
         {:else if $queryResult.error}
             <span>An error has occurred: {$queryResult.error.message}</span>
         {:else}
@@ -35,6 +36,12 @@
             overflow: scroll;
             box-shadow: 1px -6px 14px -12px rgba(0, 0, 0, 0.508) inset;
 
+            .loader {
+                display: block;
+                top: 8vh;
+                margin-left: auto;
+                margin-right: auto;
+            }
             nav {
                 display: flex;
                 flex-direction: row;
