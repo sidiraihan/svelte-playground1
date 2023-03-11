@@ -13,9 +13,14 @@ export let data;
 
 <CategoryProduct current={data.props.id}/> 
 <section>
-    {#each data.props.item as product, i}
-        <CardProduct item={product} key={i + 1} description="{false}" ref="srp"/>
-    {/each} 
+    {#await data.streamed.item}
+        Loading...
+    {:then value}
+        {#each value as product, i}
+            <CardProduct item={product} key={i + 1} description="{false}" ref="srp"/>
+        {/each}
+    {/await}
+ 
 </section>
 
 <style lang="scss">

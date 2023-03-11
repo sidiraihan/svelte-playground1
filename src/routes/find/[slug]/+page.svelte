@@ -14,7 +14,7 @@ const fetchProducts = async ({ pageParam = 1 }) => {
     onMount(async () => {
         const res = await fetch(`/api/product/category/${data.props.id}?page=${pageParam}`);
         item['data'] = await res.json();
-        console.info(item['data'].length);
+        // console.info(item['data'].length);
         if(item['data'].length > 0) {
             item['nextPage'] = pageParam+1;
         }

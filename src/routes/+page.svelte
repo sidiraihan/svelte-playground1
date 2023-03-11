@@ -7,7 +7,7 @@
 	// export let data;
 </script>
 <CategoryProduct/> 
-<SliderProduct title="Diskon 50%" expand="{false}" categoryId="57847"/> 
-<SliderProduct title="Gratisan" expand="{true}" categoryId="88340"/>  
-<SliderProduct title="Spesial Imlek" expand="{false}" categoryId="88512"/>
+<SliderProduct title="Diskon 50%" expand="{false}" categoryId="62518"/> 
+<SliderProduct title="Gratisan" expand="{true}" categoryId="62545"/>  
+<SliderProduct title="Spesial Imlek" expand="{false}" categoryId="62522"/>
 
