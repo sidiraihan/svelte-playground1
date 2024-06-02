@@ -1,6 +1,6 @@
 
 export async function GET({ fetch, params }) {
-    const res = await fetch(`https://prestisa.id/wp-json/wc/store/products?category_slug=${params.slug}`);
+    const res = await fetch(`https://prestisa.com/wp-json/wc/store/products?category_slug=${params.slug}`);
 
     const item = await res.json();
   
